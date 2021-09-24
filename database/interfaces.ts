@@ -17,9 +17,9 @@
 
 import { onChildAdded, onChildChanged, onChildMoved, onChildRemoved, onValue } from 'firebase/database';
 
-export type Query = import('firebase/database').Query;
+import { Query } from 'firebase/database';
 
-export enum ListenEvent {
+enum ListenEvent {
   added = 'child_added',
   removed = 'child_removed',
   changed = 'child_changed',
@@ -27,16 +27,18 @@ export enum ListenEvent {
   value = 'value'
 }
 
-export interface QueryChange {
+interface QueryChange {
   snapshot: import('firebase/database').DataSnapshot;
   prevKey: string | null | undefined;
   event: ListenEvent;
 }
 
-export const ListenerMethods = Object.freeze({
+const ListenerMethods = Object.freeze({
   [ListenEvent.added]: onChildAdded,
   [ListenEvent.removed]: onChildRemoved,
   [ListenEvent.changed]: onChildChanged,
   [ListenEvent.moved]: onChildMoved,
   [ListenEvent.value]: onValue,
 });
+
+export { Query, ListenEvent, QueryChange, ListenerMethods };

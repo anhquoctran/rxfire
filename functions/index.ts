@@ -20,9 +20,7 @@
 import { httpsCallable as vanillaHttpsCallable } from 'firebase/functions';
 import { from, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-
-type Functions = import('firebase/functions').Functions;
-type HttpsCallableOptions = import('firebase/functions').HttpsCallableOptions;
+import { Functions, HttpsCallableOptions } from 'firebase/functions';
 
 export function httpsCallable<RequestData = unknown, ResponseData = unknown>(
   functions: Functions,

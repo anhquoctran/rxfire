@@ -6,13 +6,7 @@ import {
 } from 'firebase/storage';
 import { Observable, from } from 'rxjs';
 import { debounceTime, map, shareReplay } from 'rxjs/operators';
-
-type UploadTaskSnapshot = import('firebase/storage').UploadTaskSnapshot;
-type StorageReference = import('firebase/storage').StorageReference;
-type UploadMetadata = import('firebase/storage').UploadMetadata;
-type StringFormat = import('firebase/storage').StringFormat;
-type UploadTask = import('firebase/storage').UploadTask;
-type UploadResult = import('firebase/storage').UploadResult;
+import { UploadTaskSnapshot, StorageReference, UploadMetadata, StringFormat, UploadTask, UploadResult } from 'firebase/storage';
 
 export function fromTask(
   task: UploadTask

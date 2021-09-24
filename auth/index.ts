@@ -21,8 +21,7 @@ import { Auth } from 'firebase/auth';
 import { onAuthStateChanged, onIdTokenChanged, getIdToken } from 'firebase/auth';
 import { Observable, from, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-
-type User = import('firebase/auth').User;
+import { User } from 'firebase/auth';
 
 /**
  * Create an observable of authentication state. The observer is only

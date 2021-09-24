@@ -1,7 +1,6 @@
 import { EMPTY, from, Observable, Subscription } from 'rxjs';
 import { tap } from 'rxjs/operators';
-
-type FirebaseApp = import('firebase/app').FirebaseApp;
+import { FirebaseApp } from 'firebase/app';
 
 /**
  * Lazy loads Firebase Performance monitoring and returns the instance as 
