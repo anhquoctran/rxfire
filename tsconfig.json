@@ -16,17 +16,13 @@
       "es2017.object",
       "es2017.string"
     ],
-    "module": "ES2020",
+    "module": "CommonJS",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "sourceMap": true,
-    "target": "es5",
-    "typeRoots": [
-      "../node_modules/@types"
-    ],
+    "target": "ES2017",
     "outDir": "dist",
-    "noEmit": false,
-    "skipLibCheck": true
+    "noEmit": false
   },
   "exclude": [
     "dist/**/*",

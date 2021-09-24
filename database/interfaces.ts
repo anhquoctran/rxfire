@@ -17,7 +17,7 @@
 
 import { onChildAdded, onChildChanged, onChildMoved, onChildRemoved, onValue } from 'firebase/database';
 
-import { Query } from 'firebase/database';
+import { Query, DataSnapshot } from 'firebase/database';
 
 enum ListenEvent {
   added = 'child_added',
@@ -28,7 +28,7 @@ enum ListenEvent {
 }
 
 interface QueryChange {
-  snapshot: import('firebase/database').DataSnapshot;
+  snapshot: DataSnapshot;
   prevKey: string | null | undefined;
   event: ListenEvent;
 }
