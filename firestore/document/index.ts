@@ -16,30 +16,31 @@
  */
 
 // TODO fix the import
-import { DocumentReference, DocumentSnapshot, DocumentData } from '../interfaces';
+import { firestore } from 'firebase-admin';
 import { fromRef } from '../fromRef';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
-export function doc<T=DocumentData>(ref: DocumentReference<T>): Observable<DocumentSnapshot<T>> {
-  return fromRef(ref, { includeMetadataChanges: true });
+export function doc<T = firestore.DocumentData>(ref: firestore.DocumentReference<T>)
+  : Observable<firestore.DocumentSnapshot<T>> {
+  return fromRef(ref);
 }
 
 /**
  * Returns a stream of a document, mapped to its data payload and optionally the document ID
  * @param query
  */
-export function docData<T=DocumentData>(
-  ref: DocumentReference<T>,
+export function docData<T = firestore.DocumentData>(
+  ref: firestore.DocumentReference<T>,
   options: {
     idField?: string
-  }={}
+  } = {}
 ): Observable<T> {
   return doc(ref).pipe(map(snap => snapToData(snap, options) as T));
 }
 
-export function snapToData<T=DocumentData>(
-    snapshot: DocumentSnapshot<T>,
+export function snapToData<T = firestore.DocumentData>(
+    snapshot: firestore.DocumentSnapshot<T>,
     options: {
       idField?: string,
     }={}
@@ -48,7 +49,7 @@ export function snapToData<T=DocumentData>(
   const data = snapshot.data() as any;
   // match the behavior of the JS SDK when the snapshot doesn't exist
   // it's possible with data converters too that the user didn't return an object
-  if (!snapshot.exists() || typeof data !== 'object' || data === null) {
+  if (!snapshot.exists || typeof data !== 'object' || data === null) {
     return data;
   }
   if (options.idField) { data[options.idField] = snapshot.id; }
