@@ -1,54 +1,17 @@
 {
   "name": "rxfire-admin",
-  "version": "6.0.2",
-  "private": true,
+  "version": "1.0.2",
+  "private": false,
   "description": "Firebase Admin JavaScript library RxJS",
-  "author": "Firebase <firebase-support@google.com> (https://firebase.google.com/)",
+  "author": {
+    "email": "aquoc.hue@outlook.com",
+    "name": "anhquoctran",
+    "url": "https://github.com/anhquoctran"
+  },
   "license": "Apache-2.0",
   "homepage": "https://firebase.google.com/",
-  "browser": "dist/index.esm.js",
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.esm.js",
-  "typings": "dist/index.d.ts",
-  "exports": {
-    ".": {
-      "import": "./dist/index.esm.js",
-      "require": "./dist/index.cjs.js"
-    },
-    "./auth": {
-      "import": "./dist/auth/index.esm.js",
-      "require": "./dist/auth/index.cjs.js"
-    },
-    "./database": {
-      "import": "./dist/database/index.esm.js",
-      "require": "./dist/database/index.cjs.js"
-    },
-    "./firestore": {
-      "import": "./dist/firestore/index.esm.js",
-      "require": "./dist/firestore/index.cjs.js"
-    },
-    "./firestore/lite": {
-      "import": "./dist/firestore/lite/index.esm.js",
-      "require": "./dist/firestore/lite/index.cjs.js"
-    },
-    "./functions": {
-      "import": "./dist/functions/index.esm.js",
-      "require": "./dist/functions/index.cjs.js"
-    },
-    "./performance": {
-      "import": "./dist/performance/index.esm.js",
-      "require": "./dist/performance/index.cjs.js"
-    },
-    "./remote-config": {
-      "import": "./dist/remote-config/index.esm.js",
-      "require": "./dist/remote-config/index.cjs.js"
-    },
-    "./storage": {
-      "import": "./dist/storage/index.esm.js",
-      "require": "./dist/storage/index.cjs.js"
-    }
-  },
   "sideEffects": false,
+  "main": "index.ts",
   "keywords": [
     "authentication",
     "database",
@@ -61,15 +24,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/firebaseextended/rxfire.git"
+    "url": "https://github.com/anhquoctran/rxfire"
   },
   "scripts": {
     "lint": "eslint -c .eslintrc.js '**/*.ts' --ignore-path './.gitignore'",
     "lint:fix": "eslint --fix -c .eslintrc.js '**/*.ts' --ignore-path './.gitignore'",
-    "build": "run-s build:**",
+    "build": "npm run build:clean && tsc",
     "build:clean": "rm -rf dist",
     "build:types": "tsc --emitDeclarationOnly",
-    "build:rollup": "rollup -c",
     "build:docs": "cp README.md ./dist/ && cp -r ./docs ./dist/",
     "dev": "rollup -c -w",
     "echo:chrome": "echo 'Open Chrome DevTools: \nchrome://inspect/#devices'",
@@ -77,8 +39,12 @@
     "test:debug": "yarn echo:chrome && FIREBASE_CLI_PREVIEWS=storageemulator firebase emulators:exec ./test-debug.sh --project=rxfire-test-c497c"
   },
   "dependencies": {
+    "firebase": "^9.0.0",
     "firebase-admin": "^9.11.1",
-    "tslib": "^2.3.1"
+    "firebase-tools": "^9.10.2",
+    "rxjs": "^7.0.0",
+    "tslib": "^2.3.1",
+    "xhr2": "^0.2.1"
   },
   "peerDependencies": {
     "firebase": "^9.0.2",
@@ -98,18 +64,12 @@
     "cross-fetch": "^3.1.4",
     "eslint": "^7.17.0",
     "eslint-config-google": "^0.14.0",
-    "firebase": "^9.0.0",
-    "firebase-tools": "^9.10.2",
     "glob": "^7.1.6",
     "jest": "^26.6.3",
     "md5": "^2.3.0",
     "npm-run-all": "^4.1.5",
-    "rollup": "^2.33.2",
-    "rollup-plugin-generate-package-json": "^3.2.0",
-    "rxjs": "^7.0.0",
-    "tslib": "^1.9.0 || ~2.1.0",
-    "typescript": "^4.2.4",
-    "xhr2": "^0.2.1"
+    "tslib": "^2.3.1",
+    "typescript": "^4.2.4"
   },
   "files": [
     "dist/**/*",
